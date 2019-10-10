@@ -17,5 +17,10 @@ namespace Comp7211GroupProject
         {
             InitializeComponent();
         }
+
+        private async void btnLogin_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
+        }
     }
 }
