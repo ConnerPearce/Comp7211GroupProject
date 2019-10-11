@@ -20,7 +20,10 @@ namespace Comp7211GroupProject
 
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new HomeNav());
+            //nav = new NavigationPage(new HomeNav());
+            //NavigationPage nav = new NavigationPage(new HomeNav());
+            //Application.Current.MainPage = nav;
         }
     }
 }
