@@ -12,6 +12,8 @@ namespace Comp7211GroupProject
 
             //MainPage = new MainPage();
             MainPage = new NavigationPage(new MainPage());
+            var navi = Application.Current.MainPage as NavigationPage;
+            navi.BarBackgroundColor = Color.Black;
         }
 
         protected override void OnStart()
