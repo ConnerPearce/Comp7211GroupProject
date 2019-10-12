@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Comp7211GroupProject.ContactPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#DADDD8">
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
