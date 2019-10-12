@@ -92,9 +92,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\TextFile1.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\mainlogo.png" />
   </ItemGroup>
   <ItemGroup>
