@@ -16,5 +16,46 @@ namespace Comp7211GroupProject
         {
             InitializeComponent();
         }
+
+        private void btnLogout_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new LoginPage());
+        }
+
+        private void btnShowStackTheme_Clicked(object sender, EventArgs e)
+        {
+            if (StackThemeLayout.IsVisible == true)
+            {
+                StackThemeLayout.IsVisible = false;
+            }
+            else
+            {
+                StackThemeLayout.IsVisible = true;
+            }
+        }
+
+        private void btnShowStackNickname_Clicked(object sender, EventArgs e)
+        {
+            if (StackNicknameLayout.IsVisible == true)
+            {
+                StackNicknameLayout.IsVisible = false;
+            }
+            else
+            {
+                StackNicknameLayout.IsVisible = true;
+            }
+        }
+
+        private void btnShowStackPassword_Clicked(object sender, EventArgs e)
+        {
+            if (StackPasswordLayout.IsVisible == true)
+            {
+                StackPasswordLayout.IsVisible = false;
+            }
+            else
+            {
+                StackPasswordLayout.IsVisible = true;
+            }
+        }
     }
 }
