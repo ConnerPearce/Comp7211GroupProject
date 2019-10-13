@@ -1,15 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Comp7211GroupProject.ContactPage">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="#DADDD8">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+             x:Class="Comp7211GroupProject.ContactPage"
+            BarBackgroundColor="White">
+    <!--Messages Page-->
+    <ContentPage Title="Messages" Icon="message.png">
+        <ContentPage.Content>
+            <StackLayout BackgroundColor="{x:StaticResource Background}">
+                <ScrollView>
+                    
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <!--Form/Email Page-->
+    <ContentPage Title="Form" Icon="email.png">
+        <ContentPage.Content>
+            <StackLayout BackgroundColor="{x:StaticResource Background}">
+                <ScrollView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Margin="0,10,0,0">
+                        <Entry x:Name="txtName" Placeholder="Name" WidthRequest="345" Margin="5"/>
+                        <Entry x:Name="txtPhone" Placeholder="Phone" WidthRequest="345" Margin="5"/>
+                        <Entry x:Name="txtEmail" Placeholder="E-mail" WidthRequest="345" Margin="5"/>
+                        <Entry x:Name="txtTopic" Placeholder="Topic" WidthRequest="345" Margin="5"/>
+                        <Entry x:Name="txtMessage" Placeholder="Message" WidthRequest="345" HeightRequest="240" Margin="5"/>
+
+                        <Button x:Name="btnSubmit" CornerRadius="100" Text="SUBMIT" TextColor="White" BackgroundColor="Black" WidthRequest="345" Margin="0,0,0,2" Clicked="btnSubmit_Clicked"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>

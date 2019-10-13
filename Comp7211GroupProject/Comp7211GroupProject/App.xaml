@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="Comp7211GroupProject.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <!-- colours -->
+            <Color x:Key="NavBar">#2196F3</Color>
+            <!-- Light Blue -->
+            <Color x:Key="Background">#DADDD8</Color>
+            <!-- Gray -->
 
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
