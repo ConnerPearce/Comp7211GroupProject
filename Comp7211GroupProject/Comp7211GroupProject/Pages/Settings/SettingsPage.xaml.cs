@@ -17,9 +17,14 @@ namespace Comp7211GroupProject
             InitializeComponent();
         }
 
-        private void btnLogout_Clicked(object sender, EventArgs e)
+        private async void btnLogout_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new LoginPage());
+            bool answer = await DisplayAlert("Logout?", "Are you sure you want to logout?", "Yes","No");
+            if (answer)
+                await Navigation.PushModalAsync(new LoginPage());
+            else
+                return;
+
         }
 
         private void btnShowStackTheme_Clicked(object sender, EventArgs e)
