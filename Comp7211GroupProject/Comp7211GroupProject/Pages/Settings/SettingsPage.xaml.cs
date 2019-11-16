@@ -24,7 +24,6 @@ namespace Comp7211GroupProject
                 await Navigation.PushModalAsync(new LoginPage());
             else
                 return;
-
         }
 
         private void btnShowStackTheme_Clicked(object sender, EventArgs e)
