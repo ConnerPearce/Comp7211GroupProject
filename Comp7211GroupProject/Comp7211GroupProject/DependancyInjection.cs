@@ -9,10 +9,9 @@ namespace Comp7211GroupProject
 {
 
     // This class is for Dependancy Injection
-    // DO NOT MODIFY
+    // DO NOT MODIFY WITHOUT ASKING
     public static class DependancyInjection
     {
-        ///Temp Edit
         public static IContainer Configure()
         {
             // Basic Injection, when we add more variables i can inject them here (INCLUDES DATABASE VARIABLES)
@@ -33,6 +32,23 @@ namespace Comp7211GroupProject
             {
                 return new MessagesProxy(baseAddress);
             }).As<IUserProxy>();
+
+            builder.Register<SettingsProxy>((c, p) =>
+            {
+                return new SettingsProxy(baseAddress);
+            }).As<ISettingsProxy>();
+
+            builder.Register<PostProxy>((c, p) =>
+            {
+                return new PostProxy(baseAddress);
+            }).As<IPostProxy>();
+
+            builder.Register<CommentsProxy>((c, p) =>
+            {
+                return new CommentsProxy(baseAddress);
+            }).As<ICommentsProxy>();
+
+            // END OF API PROXYS
 
             return builder.Build();
         }
