@@ -24,32 +24,41 @@ namespace Comp7211GroupProject
 
         private void btnLogin_Clicked(object sender, EventArgs e) //async
         {
-            StartLogin();
+                StartLogin();
+
         }
 
         public async void StartLogin()
         {
-            container = DependancyInjection.Configure();
-
-            using (var scope = container.BeginLifetimeScope())
+            try
             {
-                var app = scope.Resolve<ILoginBackend>();
-                string validation = app.CheckInfo(txtStudentID.Text, txtPassword.Text);
-                if (validation == null)
-                {
-                    var user = await app.Login(txtStudentID.Text, txtPassword.Text);
+                container = DependancyInjection.Configure();
 
-                    if (user != null)
+                using (var scope = container.BeginLifetimeScope())
+                {
+                    var app = scope.Resolve<ILoginBackend>();
+                    string validation = app.CheckInfo(txtStudentID.Text, txtPassword.Text);
+                    if (validation == null)
                     {
-                        await Navigation.PopModalAsync();
+                        var user = await app.Login(txtStudentID.Text, txtPassword.Text);
+
+                        if (user != null)
+                        {
+                            await Navigation.PopModalAsync();
+                        }
+                        else
+                            await DisplayAlert("Error", "The Login details provided are incorrect, Try again", "Ok");
                     }
                     else
-                        await DisplayAlert("Error", "The Login details provided are incorrect, Try again", "Ok");
+                        await DisplayAlert("Error", $"{validation}", "Ok");
                 }
-                else
-                    await DisplayAlert("Error", $"{validation}", "Ok");
-
             }
+            catch
+            {
+                await DisplayAlert("Error", "Something went wrong, please try again", "Ok");
+            }
+
+           
         }
     }
 }
