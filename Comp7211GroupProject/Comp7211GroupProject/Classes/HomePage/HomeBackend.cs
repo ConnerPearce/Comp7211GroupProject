@@ -18,23 +18,22 @@ namespace Comp7211GroupProject.Classes.HomePage
             _postProxy = postProxy;
         }
 
-        private ObservableCollection<IPosts> PostList = new ObservableCollection<IPosts>(){ };//The List for where we will store the data from api
+        private ObservableCollection<IPosts> ListOfPosts = new ObservableCollection<IPosts>(){ };//The List for where we will store the data from api
+        
 
-        public async void PostInfo()//this code is where the data from the api will be added to thew list
+        public async void PostInfo()//this method is where the data from the api will be added to thew list
         {
-            var temp = await _postProxy.GetAllPosts();
-            foreach (var item in temp)
+            var allPosts = await _postProxy.GetAllPosts();//gets the data from the API...
+            foreach (var item in allPosts)
             {
-                PostList.Add(item);
+                ListOfPosts.Add(item);//Adds it to the list
             }
         }
 
         public ObservableCollection<IPosts> GetPostList
         {
             //the front end will this method to display whats in the list
-            get { return PostList; }
+            get { return ListOfPosts; }
         }
-
-
     }
 }
