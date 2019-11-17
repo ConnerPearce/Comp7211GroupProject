@@ -22,11 +22,16 @@ namespace Comp7211GroupProject
             //this.login = loginMdl;
         }
 
+        private void btnLogin_Clicked(object sender, EventArgs e) //async
+        {
+            StartLogin();
+        }
+
         public async void StartLogin()
         {
             container = DependancyInjection.Configure();
 
-            using(var scope = container.BeginLifetimeScope())
+            using (var scope = container.BeginLifetimeScope())
             {
                 var app = scope.Resolve<ILoginBackend>();
                 string validation = app.CheckInfo(txtStudentID.Text, txtPassword.Text);
@@ -43,28 +48,8 @@ namespace Comp7211GroupProject
                 }
                 else
                     await DisplayAlert("Error", $"{validation}", "Ok");
-               
+
             }
-        }
-
-        private void btnLogin_Clicked(object sender, EventArgs e) //async
-        {
-            StartLogin();
-
-            //Button login = (Button)sender;
-
-            //try
-            //{
-            //    //Login logic
-            //    //if(loginSuccess)
-            //    //{
-            //    //    //await Navigation.PopModalAsync();
-            //    //}
-            //}
-            //catch (Exception ex)
-            //{
-            //    // error message
-            //}
         }
     }
 }
