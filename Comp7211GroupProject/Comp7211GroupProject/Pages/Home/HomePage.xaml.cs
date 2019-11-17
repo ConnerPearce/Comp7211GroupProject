@@ -16,5 +16,14 @@ namespace Comp7211GroupProject
         {
             InitializeComponent();
         }
+
+        private void btnCreatePost_Clicked(object sender, EventArgs e)
+        {
+            if (stackCreatePost.IsVisible == false)
+            {
+                stackPosts.IsVisible = false;
+                stackCreatePost.IsVisible = true;
+            }
+        }
     }
 }
