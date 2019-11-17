@@ -15,6 +15,8 @@ namespace Comp7211GroupProject
         public HomePage()
         {
             InitializeComponent();
+            stackCreatePost.IsVisible = false;
+            stackPosts.IsVisible = true;
         }
 
         private void btnCreatePost_Clicked(object sender, EventArgs e)
@@ -32,11 +34,17 @@ namespace Comp7211GroupProject
             stackPosts.IsVisible = true;
         }
 
-        private void btnSubmit_Clicked(object sender, EventArgs e)
+        private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
             //Send Created Post to Listview
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
+            if (txtMessage.Text == "")
+            {
+                await Navigation.PopModalAsync();
+            }
+            else
+                await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
         }
     }
 }
