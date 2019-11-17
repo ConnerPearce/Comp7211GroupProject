@@ -19,9 +19,7 @@
                 
                 <StackLayout x:Name="stackCreatePost" IsVisible="False"> <!--This is popup page to create a new post-->
                     <StackLayout Margin="20,20,20,20">
-                        <Entry x:Name="txtHeading" Placeholder="Heading" Margin="20,0,20,20"/>
-
-                        <Entry x:Name="txtMessage" Placeholder="Message" Margin="20,0,20,20"/>
+                        <Entry x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500"/>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Button x:Name="btnCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancel_Clicked"/>
