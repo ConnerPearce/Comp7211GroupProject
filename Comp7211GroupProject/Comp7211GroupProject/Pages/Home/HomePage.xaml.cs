@@ -25,5 +25,18 @@ namespace Comp7211GroupProject
                 stackCreatePost.IsVisible = true;
             }
         }
+
+        private void btnCancel_Clicked(object sender, EventArgs e)
+        {
+            stackCreatePost.IsVisible = false;
+            stackPosts.IsVisible = true;
+        }
+
+        private void btnSubmit_Clicked(object sender, EventArgs e)
+        {
+            //Send Created Post to Listview
+            stackCreatePost.IsVisible = false;
+            stackPosts.IsVisible = true;
+        }
     }
 }
