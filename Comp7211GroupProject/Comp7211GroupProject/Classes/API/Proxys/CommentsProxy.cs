@@ -16,7 +16,9 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             _baseAddress = baseAddress;
         }
 
-        public async Task<IComments> GetCommentsByPost(int postID)
+        // Use when person views post in detail, Pass through the postID
+        // CAN RETURN NULL IF THERE ARE NO COMMENTS
+        public async Task<List<IComments>> GetCommentsByPost(int postID)
         {
             var http = new HttpClient
             {
@@ -26,7 +28,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var comments = response.Content.ReadAsAsync<IComments>();
+                var comments = response.Content.ReadAsAsync<List<IComments>>();
                 if (comments != null)
                 {
                     return await comments;
@@ -38,6 +40,8 @@ namespace Comp7211GroupProject.Classes.API.Proxys
                 return null;
         }
 
+        // Called when posting, Takes in a Comment class item
+        //Returns a string detailing if it was a success or failure
         public async Task<string> PostComments(Comments comment)
         {
             HttpClient http = new HttpClient();
@@ -46,7 +50,9 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> DeletePost(int id)
+        // Deleting a post takes in the commentsID
+        //Returns a string detailing if it was a success or failure
+        public async Task<string> DeleteComment(int id)
         {
             HttpClient http = new HttpClient();
 

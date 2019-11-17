@@ -16,6 +16,9 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             _baseAddress = baseAddress;
         }
 
+
+        // Gets all Posts, Returns a list
+        // CAN RETURN NULL IF THERE ARE NO POSTS
         public async Task<List<IPosts>> GetAllPosts()
         {
             var http = new HttpClient
@@ -38,6 +41,8 @@ namespace Comp7211GroupProject.Classes.API.Proxys
                 return null;
         }
 
+        // Call when posting a post, Takes in a Post class item
+        //Returns a string detailing if it was a success or failure
         public async Task<string> PostPosts(Posts post)
         {
             HttpClient http = new HttpClient();
@@ -46,7 +51,8 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             return await response.Content.ReadAsStringAsync();
         }
 
-
+        // Call when deleting a Post, takes the postID
+        //Returns a string detailing if it was a success or failure
         public async Task<string> DeletePost(int id)
         {
             HttpClient http = new HttpClient();

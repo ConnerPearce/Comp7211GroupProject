@@ -15,6 +15,8 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             _baseAddress = baseAddress;
         }
 
+        // Call to recieve user Settings, Takes userID (NOT STUDENT ID) 
+        // CAN RETURN NULL IF THERE IS A PROBLEM
         public async Task<ISettings> GetSettings(int userID)
         {
             var http = new HttpClient
@@ -37,6 +39,9 @@ namespace Comp7211GroupProject.Classes.API.Proxys
                 return null;
         }
 
+
+        // Call when updating settings, Takes a settings class item.
+        // Returns a string detailing if it was a success or failure
         public async Task<string> PostSettings(Settings settings)
         {
             var http = new HttpClient();

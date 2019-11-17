@@ -15,7 +15,9 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             _baseAddress = baseAddress;
         }
 
-        public async Task<IMessages> GetMessages(int userID)
+        // Call to recieve messages, returns a list, needs userID (NOT STUDENT ID)
+        // WILL RETURN NULL IF THERE IS NO MESSAGES
+        public async Task<List<IMessages>> GetMessages(int userID)
         {
             var http = new HttpClient
             {
@@ -25,7 +27,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var messages = response.Content.ReadAsAsync<IMessages>();
+                var messages = response.Content.ReadAsAsync<List<IMessages>>();
                 if (messages != null)
                 {
                     return await messages;
@@ -37,6 +39,8 @@ namespace Comp7211GroupProject.Classes.API.Proxys
                 return null;
         }
 
+        // Call to post a message, Takes a message class item
+        // Returns a string detailing if it was a success or failure
         public async Task<string> PostMessage(Messages message)
         {
             HttpClient http = new HttpClient();

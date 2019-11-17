@@ -15,6 +15,9 @@ namespace Comp7211GroupProject.Classes.API.Proxys
         {
             _baseAddress = baseAddress;
         }
+
+        // Call when getting user info, takes the userID (STUDENT ID) and a password
+        // CAN RETURN NULL IF THE USER DOESNT EXIST OR THERE IS AN ERROR
         public async Task<IUsers> GetUserInfo(string userID, string pword)
         {
             var http = new HttpClient
@@ -37,6 +40,8 @@ namespace Comp7211GroupProject.Classes.API.Proxys
                 return null;
         }
 
+        // Used to update user info - i.e. nickname
+        // Returns a string detailing if it was a success or failure
         public async Task<string> PostUserInfo(Users user)
         {
             HttpClient http = new HttpClient();
