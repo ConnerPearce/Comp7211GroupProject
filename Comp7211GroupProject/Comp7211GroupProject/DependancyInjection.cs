@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Comp7211GroupProject.Classes.API.Proxys;
+using Comp7211GroupProject.Classes.LoginPage;
 
 namespace Comp7211GroupProject
 {
@@ -17,6 +18,8 @@ namespace Comp7211GroupProject
             // Basic Injection, when we add more variables i can inject them here (INCLUDES DATABASE VARIABLES)
             var builder = new ContainerBuilder();
 
+            // Injection helpers
+            builder.RegisterType<LoginBackend>().As<ILoginBackend>();
 
             // API PROXYS BELOW
 
@@ -31,7 +34,7 @@ namespace Comp7211GroupProject
             builder.Register<MessagesProxy>((c, p) =>
             {
                 return new MessagesProxy(baseAddress);
-            }).As<IUserProxy>();
+            }).As<IMessagesProxy>();
 
             builder.Register<SettingsProxy>((c, p) =>
             {

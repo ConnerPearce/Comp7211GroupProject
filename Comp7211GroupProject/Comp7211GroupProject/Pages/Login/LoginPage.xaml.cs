@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using Comp7211GroupProject.Classes.LoginPage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ namespace Comp7211GroupProject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private IContainer container;
         //private LoginModel login;
         public LoginPage()//(LoginModel loginMdl) inside LoginPage()
         {
@@ -19,9 +22,35 @@ namespace Comp7211GroupProject
             //this.login = loginMdl;
         }
 
-        private async void btnLogin_Clicked(object sender, EventArgs e) //async
+        public async void StartLogin()
         {
-            await Navigation.PopModalAsync();
+            container = DependancyInjection.Configure();
+
+            using(var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<ILoginBackend>();
+                string validation = app.CheckInfo(txtStudentID.Text, txtPassword.Text);
+                if (validation == null)
+                {
+                    var user = await app.Login(txtStudentID.Text, txtPassword.Text);
+
+                    if (user != null)
+                    {
+                        await Navigation.PopModalAsync();
+                    }
+                    else
+                        await DisplayAlert("Error", "The Login details provided are incorrect, Try again", "Ok");
+                }
+                else
+                    await DisplayAlert("Error", $"{validation}", "Ok");
+               
+            }
+        }
+
+        private void btnLogin_Clicked(object sender, EventArgs e) //async
+        {
+            StartLogin();
+
             //Button login = (Button)sender;
 
             //try

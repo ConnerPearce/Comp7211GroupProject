@@ -46,6 +46,13 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             return await response.Content.ReadAsStringAsync();
         }
 
-        // Maybe Delete?
+
+        public async Task<string> DeletePost(int id)
+        {
+            HttpClient http = new HttpClient();
+
+            var response = await http.DeleteAsync($"{_baseAddress}api/Posts/{id}");
+            return await response.Content.ReadAsStringAsync();
+        }
     }
 }
