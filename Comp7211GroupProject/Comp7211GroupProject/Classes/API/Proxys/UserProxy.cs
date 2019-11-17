@@ -25,7 +25,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var user = response.Content.ReadAsAsync<IUsers>();
+                var user = response.Content.ReadAsAsync<Users>();
                 if (user != null)
                 {
                     return await user;
