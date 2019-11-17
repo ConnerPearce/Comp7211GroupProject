@@ -9,15 +9,15 @@
         <ScrollView>
             <StackLayout BackgroundColor="#DADDD8"> 
                 <StackLayout x:Name="stackPosts" IsVisible="True"> <!--This is where all the posts are shown etc-->
-                    <ListView> <!--THis is where the posts are viewed-->
-                        
-                    </ListView>
                     <StackLayout Margin="20,20,20,20">
                         <Button x:Name="btnCreatePost" Text="What's on your mind?" BackgroundColor="White" TextColor="DimGray" CornerRadius="25" Clicked="btnCreatePost_Clicked"/>
                     </StackLayout>
+                    <ListView> <!--THis is where the posts are viewed-->
+                    
+                    </ListView>
                 </StackLayout>
                 
-                <StackLayout x:Name="stackCreatePost" IsVisible="True"> <!--This is popup page to create a new post-->
+                <StackLayout x:Name="stackCreatePost" IsVisible="False"> <!--This is popup page to create a new post-->
                     <StackLayout Margin="20,20,20,20">
                         <Entry x:Name="txtHeading" Placeholder="Heading" Margin="20,0,20,20"/>
 
