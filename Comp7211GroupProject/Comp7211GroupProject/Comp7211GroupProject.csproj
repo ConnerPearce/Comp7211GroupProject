@@ -37,7 +37,6 @@
   <ItemGroup>
     <Folder Include="Classes\ContactPage\Messages\" />
     <Folder Include="Classes\ContactPage\Form\" />
-    <Folder Include="Classes\HomePage\" />
     <Folder Include="Classes\SettingsPage\" />
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             _baseAddress = baseAddress;
         }
 
-        public async Task<IPosts> GetAllPosts()
+        public async Task<List<IPosts>> GetAllPosts()
         {
             var http = new HttpClient
             {
@@ -26,7 +26,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var posts = response.Content.ReadAsAsync<IPosts>();
+                var posts = response.Content.ReadAsAsync<List<IPosts>>();
                 if (posts != null)
                 {
                     return await posts;
