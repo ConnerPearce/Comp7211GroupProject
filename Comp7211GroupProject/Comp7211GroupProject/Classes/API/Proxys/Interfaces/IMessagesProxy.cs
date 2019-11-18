@@ -6,7 +6,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
 {
     public interface IMessagesProxy
     {
-        Task<List<IMessages>> GetMessages(int userID);
+        Task<List<Messages>> GetMessages(int userID);
         Task<string> PostMessage(Messages message);
     }
 }

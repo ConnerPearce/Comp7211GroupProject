@@ -17,7 +17,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
 
         // Call to recieve messages, returns a list, needs userID (NOT STUDENT ID)
         // WILL RETURN NULL IF THERE IS NO MESSAGES
-        public async Task<List<IMessages>> GetMessages(int userID)
+        public async Task<List<Messages>> GetMessages(int userID)
         {
             var http = new HttpClient
             {
@@ -27,10 +27,10 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var messages = response.Content.ReadAsAsync<List<IMessages>>();
+                var messages = await response.Content.ReadAsAsync<List<Messages>>();
                 if (messages != null)
                 {
-                    return await messages;
+                    return messages;
                 }
                 else
                     return null;

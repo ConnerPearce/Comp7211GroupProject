@@ -25,7 +25,7 @@ namespace Comp7211GroupProject
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
 
-           GetPosts();
+          // GetPosts();
         }
 
         private async void GetPosts()

@@ -21,7 +21,6 @@ namespace Comp7211GroupProject.Classes.HomePage
         public HomeBackend(IPostProxy postProxy)
         {
             _postProxy = postProxy;
-
             GetPostInfo();
         }
 
@@ -30,6 +29,7 @@ namespace Comp7211GroupProject.Classes.HomePage
         public async void GetPostInfo()//this code is where the data from the api will be added to thew list
         {
             PostList = new List<Posts>();
+
             var temp = await _postProxy.GetAllPosts();
             if (temp != null)
             {
@@ -42,11 +42,7 @@ namespace Comp7211GroupProject.Classes.HomePage
                 }
                 else
                     PostList.Add(temp[0]);
-
             }
-
-
         }
-
     }
 }
