@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.API.Proxys;
+using System.Threading.Tasks;
 
 namespace Comp7211GroupProject.Classes.ContactPage.Message
 {
@@ -43,22 +44,15 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
         }
 
         //The code below is for sending messages
-        //testing 
-
-        private readonly IMessages _messages;
-
-        public MessagesBackend(Messages messages)
-        {
-            _messages = messages;
-        }
 
         public async Task<string> SendMessages(string message)
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                var result = await _messagesProxy.PostMessage(new Messsages { RecieverId = 1, SenderId = 2, Msg = message });//please change the hard coded number
+                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = 1, SenderId = 2, Msg = message });//please change the hard coded number
                 return result;
             }
+            return null;
         }
     }
 }
