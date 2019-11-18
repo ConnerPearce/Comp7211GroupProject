@@ -34,7 +34,8 @@
 
                     <StackLayout x:Name="ReplyStack" IsVisible="False"> <!--This is popup page to reply to a message-->                    
                         <StackLayout Margin="20,20,20,20">
-                            <Entry x:Name="txtMsg" Placeholder="Reply to message" Margin="20,0,20,20" WidthRequest="345" HeightRequest="100" TextColor="White"/>
+                            <Label x:Name="lblMsgPreview"/>
+                            <Entry x:Name="txtMsg" Placeholder="Reply to message" Margin="20,0,20,20" WidthRequest="345" HeightRequest="100" TextColor="Black"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Button x:Name="btnCancelMsg" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancelMsg_Clicked"/>
                                 <Button x:Name="btnSubmitMsg" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnSubmitMsg_Clicked"/>

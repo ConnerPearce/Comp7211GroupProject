@@ -49,7 +49,7 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = 1, SenderId = 2, Msg = message });//please change the hard coded number
+                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = 1, SenderId = 2, Msg = message }); //please change the hard coded number
                 return result;
             }
             return null;
