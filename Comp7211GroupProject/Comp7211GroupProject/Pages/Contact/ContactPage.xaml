@@ -14,15 +14,15 @@
         <ContentPage.Content>
             <ScrollView>
                 <StackLayout BackgroundColor="{x:StaticResource Background}">
-                    <ListView ItemsSource="{Binding MessagesList}" HasUnevenRows="True">
+                    <ListView ItemsSource="{Binding MessagesList}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
                         <ListView.BindingContext>
                             <local1:MessagesBackend/>
                         </ListView.BindingContext>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Margin="15,15,15,0" BackgroundColor="White" Orientation="Horizontal">
-                                        <Label Text="{Binding Msg}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0,0,0" FontSize="Medium"/>
+                                    <StackLayout Margin="10">
+                                        <Label Text="{Binding Msg}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0,0,0"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
