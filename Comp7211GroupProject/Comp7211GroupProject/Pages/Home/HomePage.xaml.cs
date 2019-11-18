@@ -50,7 +50,7 @@ namespace Comp7211GroupProject
             stackPosts.IsVisible = true;
             if (!String.IsNullOrEmpty(txtMessage.Text))
             {
-                string response = await postsProxy.PostPosts(new Posts { Post = txtMessage.Text, Uid = 1 });
+                string response = await postsProxy.PostPosts(new Posts { Post = txtMessage.Text, Uid = MainPage.user.Id });
                 await DisplayAlert("Progress", response , "Ok");
             }
             else

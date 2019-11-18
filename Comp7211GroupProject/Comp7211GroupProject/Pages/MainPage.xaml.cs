@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration;
-
+using Comp7211GroupProject.Classes.API.Models;
 
 namespace Comp7211GroupProject
 {
@@ -18,6 +18,8 @@ namespace Comp7211GroupProject
     [DesignTimeVisible(false)]
     public partial class MainPage : Xamarin.Forms.TabbedPage
     {
+
+        public static IUsers user = new Users();
         public MainPage()
         {
             //If user isn't already logged in, push LognPage on top of NavigationPage
@@ -41,7 +43,6 @@ namespace Comp7211GroupProject
             Children[1].Title = "Contact";
             Children[2].IconImageSource = "settingicon.png";
             Children[2].Title = "Settings";
-
             CurrentPage = Children[0]; //The page it loads first (Home Page)
         }
 

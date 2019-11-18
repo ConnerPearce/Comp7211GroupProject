@@ -44,6 +44,7 @@ namespace Comp7211GroupProject
 
                         if (user != null)
                         {
+                            MainPage.user = user;
                             await Navigation.PopModalAsync();
                         }
                         else
