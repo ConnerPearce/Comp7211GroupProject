@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.LoginPage;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Comp7211GroupProject
     public partial class LoginPage : ContentPage
     {
         private IContainer container;
-        //private LoginModel login;
+        //private Users login;
         public LoginPage()//(LoginModel loginMdl) inside LoginPage()
         {
             InitializeComponent();
