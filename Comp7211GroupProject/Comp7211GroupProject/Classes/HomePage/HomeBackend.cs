@@ -10,9 +10,9 @@ namespace Comp7211GroupProject.Classes.HomePage
     public class HomeBackend
     {
         // Use for accessing API
-        IPostProxy _postProxy;
+        private readonly IPostProxy _postProxy;
 
-
+        //POSTS
         public HomeBackend(IPostProxy postProxy)
         {
             _postProxy = postProxy;
@@ -32,8 +32,16 @@ namespace Comp7211GroupProject.Classes.HomePage
 
         public ObservableCollection<IPosts> GetPostList
         {
-            //the front end will this method to display whats in the list
+            //the front end will use this method to display whats in the list
             get { return ListOfPosts; }
         }
+
+
+
+        //UPVOTES
+
+
+
+
     }
 }
