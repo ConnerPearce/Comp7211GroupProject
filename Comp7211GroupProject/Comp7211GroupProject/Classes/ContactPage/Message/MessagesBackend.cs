@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.API.Proxys;
+using System.Threading.Tasks;
 
 namespace Comp7211GroupProject.Classes.ContactPage.Message
 {
@@ -24,7 +25,7 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
 
         public List<Messages> MessagesList { get; set; } = new List<Messages>();//The List for where we will store the data from api
 
-        public async void GetMessagesInfo()//this code is where the data from the api will be added to thew list
+        public async void GetMessagesInfo()//this code is where the data from the api will be added to the list
         {
             MessagesList = new List<Messages>();
             var temp = await _messagesProxy.GetMessages(2);
@@ -41,7 +42,5 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
                     MessagesList.Add(temp[0]);
             }
         }
-
-        //Send messages
     }
 }
