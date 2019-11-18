@@ -2,6 +2,7 @@
 using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.API.Proxys;
 using Comp7211GroupProject.Classes.HomePage;
+using Comp7211GroupProject.Pages.Home;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,6 +28,8 @@ namespace Comp7211GroupProject
             stackPosts.IsVisible = true;
 
         }
+
+        
 
         private void btnCreatePost_Clicked(object sender, EventArgs e)
         {
@@ -56,6 +59,14 @@ namespace Comp7211GroupProject
             else
                 await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
 
+        }
+
+        //tap on a post and it will expand on it allow you to like or private message
+        private void lblViewPost_Tapped(object sender, EventArgs e)
+        {
+            ViewPostPage veiwPost = new ViewPostPage();
+
+            this.Navigation.PushModalAsync(veiwPost);
         }
     }
 }
