@@ -41,5 +41,7 @@ namespace Comp7211GroupProject.Classes.ContactPage.Form
                     MessagesList.Add(temp[0]);
             }
         }
+
+        //Send messages
     }
 }
