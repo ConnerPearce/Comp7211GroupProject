@@ -17,22 +17,18 @@ namespace Comp7211GroupProject
     public partial class ContactPage : Xamarin.Forms.TabbedPage
     {
         private readonly IMessagesProxy _messageProxy = new MessagesProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
-        private Messages msgMod = new Messages();
+        private IMessages msgMod = new Messages();
 
         public ContactPage()
-        {
+        {          
+            InitializeComponent();
             On<Android>().SetBarSelectedItemColor(Color.Black);
             On<Android>().SetBarItemColor(Color.FromHex("#737373"));
-            InitializeComponent();
             MsgStack.IsVisible = true;
             ReplyStack.IsVisible = false;
         }
 
-        public ContactPage(IMessagesProxy messagesProxy)
-        {
-            _messageProxy = messagesProxy;
-        }
-
+        //Form page functions
         private void btnSubmit_Clicked(object sender, EventArgs e)
         {
             FormValidation();
@@ -54,21 +50,12 @@ namespace Comp7211GroupProject
             }
         }
 
-
-
-
-
-
-        //Message page stuff
+        //Message page functions
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            msgMod = (Messages)e.SelectedItem;
-
-            if(ReplyStack.IsVisible == false)
-            {
-                MsgStack.IsVisible = false;
-                ReplyStack.IsVisible = true;
-            }
+            msgMod = (IMessages)e.SelectedItem;
+            MsgStack.IsVisible = false;
+            ReplyStack.IsVisible = true;
         }
 
         private void btnCancelMsg_Clicked(object sender, EventArgs e)
@@ -78,14 +65,13 @@ namespace Comp7211GroupProject
         }
 
         private async void btnSubmitMsg_Clicked(object sender, EventArgs e)
-        {
-            MsgStack.IsVisible = true;
-            ReplyStack.IsVisible = false;
-
+        {          
             if(!String.IsNullOrEmpty(txtMsg.Text))
             {
                 var temp = await _messageProxy.PostMessage(new Messages { ReceiverId = msgMod.SenderId, SenderId = msgMod.ReceiverId, Msg = txtMsg.Text });
-                await DisplayAlert("Progress of Message", temp, "Ok");
+                await DisplayAlert("Reply Sent", temp, "Ok");
+                MsgStack.IsVisible = true;
+                ReplyStack.IsVisible = false;
                 await Navigation.PopModalAsync();
             }
         }
