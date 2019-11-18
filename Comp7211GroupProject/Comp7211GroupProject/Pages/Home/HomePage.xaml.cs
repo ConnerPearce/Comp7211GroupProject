@@ -74,12 +74,12 @@ namespace Comp7211GroupProject
             //Send Created Post to Listview
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
-            if (txtMessage.Text == "")
+            if (String.IsNullOrEmpty(txtMessage.Text))
             {
-                await Navigation.PopModalAsync();
+                await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
             }
             else
-                await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
+                await Navigation.PopModalAsync();
         }
     }
 }
