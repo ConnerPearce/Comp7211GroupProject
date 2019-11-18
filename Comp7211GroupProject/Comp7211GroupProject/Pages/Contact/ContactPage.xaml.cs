@@ -28,7 +28,7 @@ namespace Comp7211GroupProject
 
         private async void FormValidation()
         {
-            if (txtName.Text == "" || txtPhone.Text == "" || txtEmail.Text == "" || txtTopic.Text == "" || txtMessage.Text == "")
+            if (txtName.Text == string.Empty || txtPhone.Text == string.Empty || txtEmail.Text == string.Empty || txtTopic.Text == string.Empty || txtMessage.Text == string.Empty)
             {
                 await DisplayAlert("ERROR", "Empty Fields Detected", "Try Again");
             }
