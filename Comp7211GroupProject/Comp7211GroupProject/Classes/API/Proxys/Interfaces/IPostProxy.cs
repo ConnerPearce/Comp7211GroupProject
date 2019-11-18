@@ -6,7 +6,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
 {
     public interface IPostProxy
     {
-        Task<List<IPosts>> GetAllPosts();
+        Task<List<Posts>> GetAllPosts();
         Task<string> PostPosts(Posts post);
     }
 }

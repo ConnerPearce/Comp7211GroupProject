@@ -24,8 +24,7 @@ namespace Comp7211GroupProject
 
         private void btnLogin_Clicked(object sender, EventArgs e) //async
         {
-                StartLogin();
-
+            StartLogin();
         }
 
         public async void StartLogin()

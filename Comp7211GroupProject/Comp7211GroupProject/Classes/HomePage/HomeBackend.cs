@@ -4,44 +4,49 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Comp7211GroupProject.Classes.HomePage
 {
-    public class HomeBackend
+    public class HomeBackend : IHomeBackend
     {
         // Use for accessing API
-        private readonly IPostProxy _postProxy;
+        private readonly IPostProxy _postProxy = new PostProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
 
-        //POSTS
+        public HomeBackend()
+	    {
+            GetPostInfo();
+	    }
+
         public HomeBackend(IPostProxy postProxy)
         {
             _postProxy = postProxy;
+
+            GetPostInfo();
         }
 
-        private ObservableCollection<IPosts> ListOfPosts = new ObservableCollection<IPosts>(){ };//The List for where we will store the data from api
-        
+        public List<Posts> PostList { get; set; } = new List<Posts>();//The List for where we will store the data from api
 
-        public async void PostInfo()//this method is where the data from the api will be added to thew list
+        public async void GetPostInfo()//this code is where the data from the api will be added to thew list
         {
-            var allPosts = await _postProxy.GetAllPosts();//gets the data from the API...
-            foreach (var item in allPosts)
+            PostList = new List<Posts>();
+            var temp = await _postProxy.GetAllPosts();
+            if (temp != null)
             {
-                ListOfPosts.Add(item);//Adds it to the list
+                if (temp.Count > 1)
+                {
+                    foreach (var item in temp)
+                    {
+                        PostList.Add(item);
+                    }
+                }
+                else
+                    PostList.Add(temp[0]);
+
             }
+
+
         }
-
-        public ObservableCollection<IPosts> GetPostList
-        {
-            //the front end will use this method to display whats in the list
-            get { return ListOfPosts; }
-        }
-
-
-
-        //UPVOTES
-
-
-        
 
     }
 }
