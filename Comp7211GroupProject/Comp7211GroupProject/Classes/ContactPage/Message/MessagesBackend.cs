@@ -42,6 +42,23 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
             }
         }
 
-        //Send messages
+        //The code below is for sending messages
+        //testing 
+
+        private readonly IMessages _messages;
+
+        public MessagesBackend(Messages messages)
+        {
+            _messages = messages;
+        }
+
+        public async Task<string> SendMessages(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                var result = await _messagesProxy.PostMessage(new Messsages { _messages.RecieverId = 1, _messages.SenderId = 2, _messages.Msg = message });//please change the hard coded number
+                return await result;
+            }
+        }
     }
 }
