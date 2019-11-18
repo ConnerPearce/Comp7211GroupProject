@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Comp7211GroupProject.Classes.API.Models;
+using Comp7211GroupProject.Classes.API.Proxys;
 using Comp7211GroupProject.Classes.HomePage;
 using Comp7211GroupProject.Pages.Home;
 using System;
@@ -17,8 +18,8 @@ namespace Comp7211GroupProject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        private IContainer container;
-        List<Posts> posts = new List<Posts>();
+
+        PostProxy postsProxy = new PostProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
 
         public HomePage()
         {
@@ -26,33 +27,6 @@ namespace Comp7211GroupProject
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
 
-          // GetPosts();
-        }
-
-        private async void GetPosts()
-        {
-            try
-            {
-                container = DependancyInjection.Configure();
-
-                using (var scope = container.BeginLifetimeScope())
-                {
-                    var app = scope.Resolve<IHomeBackend>();
-
-                    var temp = app.PostList;
-                    if (temp != null)
-                    {
-                        posts = temp;
-                    }
-                    else
-                        await DisplayAlert("Error", "There was an error retrieving the posts, Reload the page", "Ok");
-
-                }
-            }
-            catch
-            {
-                await DisplayAlert("Error", "There was an error retrieving the posts, Reload the page", "Ok");
-            }
         }
 
         
@@ -77,12 +51,14 @@ namespace Comp7211GroupProject
             //Send Created Post to Listview
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
-            if (String.IsNullOrEmpty(txtMessage.Text))
+            if (!String.IsNullOrEmpty(txtMessage.Text))
             {
-                await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
+                string response = await postsProxy.PostPosts(new Posts { Post = txtMessage.Text, Uid = 1 });
+                await DisplayAlert("Progress", response , "Ok");
             }
             else
-                await Navigation.PopModalAsync();
+                await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
+
         }
 
         //tap on a post and it will expand on it allow you to like or private message

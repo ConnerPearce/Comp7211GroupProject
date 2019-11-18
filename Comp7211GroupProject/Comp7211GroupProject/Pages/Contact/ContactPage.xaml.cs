@@ -54,6 +54,7 @@ namespace Comp7211GroupProject
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             msgMod = (IMessages)e.SelectedItem;
+            lblMsgPreview.Text = msgMod.Msg;
             MsgStack.IsVisible = false;
             ReplyStack.IsVisible = true;
         }
