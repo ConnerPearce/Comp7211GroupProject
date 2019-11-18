@@ -119,5 +119,10 @@ namespace Comp7211GroupProject
                 await DisplayAlert("Password Error", "Passwords do not match!", "Try Again!");
             }
         }
+
+        private void btnAboutMe_Clicked(object sender, EventArgs e) //For Karl - 
+        {
+
+        }
     }
 }

@@ -56,6 +56,8 @@
                     </StackLayout>
                 </StackLayout>
 
+                <Button x:Name="btnAboutMe" BackgroundColor="White" Text="About Me" TextColor="Black" Margin="0,10,0,0" Clicked="btnAboutMe_Clicked"/>
+
                 <Button x:Name="btnLogout" BackgroundColor="DarkRed" Text="LOGOUT" TextColor="White" Margin="0,10,0,10" Clicked="btnLogout_Clicked"/>
             </StackLayout>
         </ScrollView>
