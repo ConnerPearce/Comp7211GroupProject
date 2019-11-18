@@ -56,8 +56,8 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                var result = await _messagesProxy.PostMessage(new Messsages { _messages.RecieverId = 1, _messages.SenderId = 2, _messages.Msg = message });//please change the hard coded number
-                return await result;
+                var result = await _messagesProxy.PostMessage(new Messsages { RecieverId = 1, SenderId = 2, Msg = message });//please change the hard coded number
+                return result;
             }
         }
     }
