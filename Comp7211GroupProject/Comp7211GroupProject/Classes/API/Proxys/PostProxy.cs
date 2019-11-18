@@ -19,7 +19,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
 
         // Gets all Posts, Returns a list
         // CAN RETURN NULL IF THERE ARE NO POSTS
-        public async Task<List<IPosts>> GetAllPosts()
+        public async Task<List<Posts>> GetAllPosts()
         {
             var http = new HttpClient
             {
@@ -29,10 +29,10 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var posts = response.Content.ReadAsAsync<List<IPosts>>();
+                var posts = await response.Content.ReadAsAsync<List<Posts>>();
                 if (posts != null)
                 {
-                    return await posts;
+                    return posts;
                 }
                 else
                     return null;

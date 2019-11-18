@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Comp7211GroupProject.Classes.API.Proxys;
+using Comp7211GroupProject.Classes.HomePage;
 using Comp7211GroupProject.Classes.LoginPage;
 
 namespace Comp7211GroupProject
@@ -20,6 +21,7 @@ namespace Comp7211GroupProject
 
             // Injection helpers
             builder.RegisterType<LoginBackend>().As<ILoginBackend>();
+            builder.RegisterType<HomeBackend>().As<IHomeBackend>();
 
             // API PROXYS BELOW
 
