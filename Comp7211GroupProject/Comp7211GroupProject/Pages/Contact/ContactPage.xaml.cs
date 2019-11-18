@@ -23,7 +23,23 @@ namespace Comp7211GroupProject
 
         private void btnSubmit_Clicked(object sender, EventArgs e)
         {
+            FormValidation();
+        }
 
+        private async void FormValidation()
+        {
+            if (string.IsNullOrWhiteSpace(txtName.Text) || 
+                string.IsNullOrWhiteSpace(txtPhone.Text) || 
+                string.IsNullOrWhiteSpace(txtEmail.Text) || 
+                string.IsNullOrWhiteSpace(txtTopic.Text) || 
+                string.IsNullOrWhiteSpace(txtMessage.Text))
+            {
+                await DisplayAlert("ERROR", "Empty fields detected", "Try Again");
+            }
+            else
+            {
+                await DisplayAlert("SUCCESS", "Email Sent", "OK");
+            }
         }
     }
 }

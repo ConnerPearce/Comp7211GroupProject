@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Comp7211GroupProject.Classes.API.Models;
+using Comp7211GroupProject.Classes.API.Proxys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +62,67 @@ namespace Comp7211GroupProject
             {
                 StackPasswordLayout.IsVisible = true;
             }
+        }
+
+        private void btnSaveNickname_Clicked(object sender, EventArgs e)
+        {
+            SaveNickname();
+        }
+
+        private void btnSavePassword_Clicked(object sender, EventArgs e)
+        {
+            SavePassword();
+        }
+
+        private async void SavePassword()
+        {
+            UserProxy userProxy = new UserProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
+            Users user = new Users() { Id = 3, Uid = "27036778", Fname = "Jot", Lname = "Sidhu", Pword = "1234" };
+            if (user.Pword == txtOldPassword.Text)
+            {
+                if (txtNewPassword.Text == txtConfirmNewPassword.Text)
+                {
+                    user.Pword = txtConfirmNewPassword.Text;
+                    txtOldPassword.Text = "";
+                    txtNewPassword.Text = "";
+                    txtConfirmNewPassword.Text = "";
+                    await DisplayAlert("SUCCESS", "Successfuly changed Password", "Ok");
+                }
+                else
+                {
+                    await DisplayAlert("Password Error", "New Passwords do not match!", "Try Again!");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Password Error", "Old Password is incorrect!", "Try Again!");
+            }
+        }
+
+        private async void SaveNickname()
+        {
+            UserProxy userProxy = new UserProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
+            Users user = new Users() { Id = 3, Uid = "27036778", Fname = "Jot", Lname = "Sidhu", Pword = "1234" };
+            if (txtPassword.Text == txtConfirmPassword.Text)
+            {
+                if (user.Pword == txtConfirmPassword.Text)
+                {
+                    user.Nickname = txtNickname.Text;
+                    txtNickname.Text = "";
+                    txtPassword.Text = "";
+                    txtConfirmPassword.Text = "";
+                    await DisplayAlert("Result of Changes", $"{await userProxy.PostUserInfo(user)}", "Ok");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Password Error", "Passwords do not match!", "Try Again!");
+            }
+        }
+
+        private void btnAboutMe_Clicked(object sender, EventArgs e) //For Karl - 
+        {
+
         }
     }
 }
