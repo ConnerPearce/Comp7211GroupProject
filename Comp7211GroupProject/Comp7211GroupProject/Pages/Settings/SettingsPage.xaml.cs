@@ -121,7 +121,14 @@ namespace Comp7211GroupProject
 
         private void btnAboutMe_Clicked(object sender, EventArgs e) //For Karl - 
         {
-
+            if (stackAboutMe.IsVisible == true)
+            {
+                stackAboutMe.IsVisible = false;
+            }
+            else
+            {
+                stackAboutMe.IsVisible = true;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.API.Proxys;
 using Comp7211GroupProject.Classes.HomePage;
+using Comp7211GroupProject.Classes.ContactPage.Message;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,6 +22,7 @@ namespace Comp7211GroupProject
 
         PostProxy postsProxy = new PostProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
         CommentsProxy commentsProxy = new CommentsProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
+        private readonly IMessagesProxy _messagesProxy = new MessagesProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
         private IPosts post = new Posts();
         bool liked;
         public HomePage()
@@ -65,17 +67,21 @@ namespace Comp7211GroupProject
 
         private void viewPost_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            post = (IPosts)e.SelectedItem;
             if (stackCreatePost.IsVisible == false)
             {
-                stackPosts.IsVisible = false;
-                stackViewPost.IsVisible = true;
-                post = (IPosts)e.SelectedItem;
-                txtViewPost.Text = post.Post;
-                HomeBackend backend = new HomeBackend();
-                backend.GetCommentsInfo(post.Id);
-                if (backend.CommentsList != null)
+                if (post != null)
                 {
-                    lstComments.ItemsSource = backend.CommentsList;
+                    txtViewPost.Text = post.Post;
+                    stackPosts.IsVisible = false;
+                    stackViewPost.IsVisible = true;
+
+                    HomeBackend hBackend = new HomeBackend();
+                    hBackend.GetCommentsInfo(post.Id);
+                    if (hBackend.CommentsList != null)
+                    {
+                        lstComments.ItemsSource = hBackend.CommentsList;
+                    }
                 }
             } 
         }
@@ -84,11 +90,14 @@ namespace Comp7211GroupProject
         {
             stackPosts.IsVisible = true;
             stackViewPost.IsVisible = false;
+            lstViewPosts.SelectedItem = null;
+            txtViewPost.Text = String.Empty;
         }
 
         private void btnVPPrivateMsg_Clicked(object sender, EventArgs e)
         {
-
+            stackPrivateM.IsVisible = true;
+            stackViewPost.IsVisible = false;
         }
 
         private void btnVPUpVote_Clicked(object sender, EventArgs e)
@@ -105,7 +114,7 @@ namespace Comp7211GroupProject
             }
         }
 
-        private async void btnSend_Clicked(object sender, EventArgs e)
+        private async void btnSendComment_Clicked(object sender, EventArgs e)//sends comment
         {
             if (!String.IsNullOrEmpty(txtComment.Text))
             {
@@ -113,6 +122,24 @@ namespace Comp7211GroupProject
                 await DisplayAlert("Comment Sent", response, "Ok");
                 txtComment.Text = String.Empty;
             }
+        }
+
+        private void btnPMCancel_Clicked(object sender, EventArgs e)//brings the you back from Private Message page to View Posts page
+        {
+            stackPrivateM.IsVisible = false;
+            stackViewPost.IsVisible = true;
+        }
+
+        private async void btnPMSubmit_Clicked(object sender, EventArgs e)
+        {
+            MessagesBackend _messagesBack = new MessagesBackend();
+
+            string response = await _messagesBack.SendMessages(txtPrivateMessage.Text, post.Uid);
+            await DisplayAlert("Comment Sent", response, "Ok");
+            txtPrivateMessage.Text = String.Empty;
+
+            //var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = post, SenderId = MainPage.user.Id, Msg = txtPrivateMessage.Text });
+            //await DisplayAlert("Comment Sent", result, "Ok");
         }
     }
 }

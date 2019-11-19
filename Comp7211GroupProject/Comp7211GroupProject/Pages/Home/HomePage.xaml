@@ -30,9 +30,10 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-
+                
+                <!--This is a popup page to create a new post-->
                 <StackLayout x:Name="stackCreatePost" IsVisible="False">
-                    <!--This is popup page to create a new post-->
+                    
                     <StackLayout Margin="20,20,20,20">
                         <Entry x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
 
@@ -43,7 +44,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <!--This is where show post is located-->
+                <!--This is the View Post Page-->
                 <StackLayout x:Name="stackViewPost" IsVisible="False">
 
                     <!--Displays post-->
@@ -62,7 +63,7 @@
                     <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
                         <Editor x:Name="txtComment" Placeholder="Your comment..." WidthRequest="300" HeightRequest="100"/>
                         <StackLayout VerticalOptions="Center">
-                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSend_Clicked" HeightRequest="50" VerticalOptions="Center"/>
+                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendComment_Clicked" HeightRequest="50" VerticalOptions="Center"/>
                         </StackLayout>
                     </StackLayout>
 
@@ -82,9 +83,24 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
+                    
+                    
 
                 </StackLayout>
-                
+
+                <!--Create Private Message Page -->
+                <StackLayout x:Name="stackPrivateM" IsVisible="False">
+
+                    <StackLayout Margin="20,20,20,20">
+                        <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="btnPMCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnPMCancel_Clicked"/>
+                            <Button x:Name="btnPMSubmit" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnPMSubmit_Clicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

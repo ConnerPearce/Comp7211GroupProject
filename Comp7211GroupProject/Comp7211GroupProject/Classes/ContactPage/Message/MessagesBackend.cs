@@ -47,14 +47,22 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
 
         //The code below is for sending messages
 
-        public async Task<string> SendMessages(string message)
+        public async Task<string> SendMessages(string message, int recId)
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = 1, SenderId = MainPage.user.Id, Msg = message });
+                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = recId, SenderId = MainPage.user.Id, Msg = message });
                 return result;
             }
-            return null;
+            else
+            {
+                var result = "THIS is NOT WORKs";
+                return result;
+
+
+            }
+            //return null;
         }
+
     }
 }
