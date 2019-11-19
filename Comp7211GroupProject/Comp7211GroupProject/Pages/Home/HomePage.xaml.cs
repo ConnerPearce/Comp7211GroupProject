@@ -20,6 +20,7 @@ namespace Comp7211GroupProject
     {
 
         PostProxy postsProxy = new PostProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
+        CommentsProxy commentsProxy = new CommentsProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
         private IPosts post = new Posts();
         bool liked;
         public HomePage()
@@ -29,8 +30,6 @@ namespace Comp7211GroupProject
             stackPosts.IsVisible = true;
 
         }
-
-        
 
         private void btnCreatePost_Clicked(object sender, EventArgs e)
         {
@@ -72,6 +71,12 @@ namespace Comp7211GroupProject
                 stackViewPost.IsVisible = true;
                 post = (IPosts)e.SelectedItem;
                 txtViewPost.Text = post.Post;
+                HomeBackend backend = new HomeBackend();
+                backend.GetCommentsInfo(post.Id);
+                if (backend.CommentsList != null)
+                {
+                    lstComments.ItemsSource = backend.CommentsList;
+                }
             } 
         }
 
@@ -97,6 +102,16 @@ namespace Comp7211GroupProject
             {
                 (sender as ImageButton).Source = "arrowUp1.png";
                 liked = false;
+            }
+        }
+
+        private async void btnSend_Clicked(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtComment.Text))
+            {
+                string response = await commentsProxy.PostComments(new Comments { Comment = txtComment.Text, PostId = post.Id, Uid = MainPage.user.Id });
+                await DisplayAlert("Comment Sent", response, "Ok");
+                txtComment.Text = String.Empty;
             }
         }
     }

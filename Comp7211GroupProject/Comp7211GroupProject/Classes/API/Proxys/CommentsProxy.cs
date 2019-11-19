@@ -18,7 +18,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
 
         // Use when person views post in detail, Pass through the postID
         // CAN RETURN NULL IF THERE ARE NO COMMENTS
-        public async Task<List<IComments>> GetCommentsByPost(int postID)
+        public async Task<List<Comments>> GetCommentsByPost(int postID)
         {
             var http = new HttpClient
             {
@@ -28,10 +28,10 @@ namespace Comp7211GroupProject.Classes.API.Proxys
             HttpResponseMessage response = http.GetAsync(url).Result;
             if (response.IsSuccessStatusCode)
             {
-                var comments = response.Content.ReadAsAsync<List<IComments>>();
+                var comments = await response.Content.ReadAsAsync<List<Comments>>();
                 if (comments != null)
                 {
-                    return await comments;
+                    return comments;
                 }
                 else
                     return null;

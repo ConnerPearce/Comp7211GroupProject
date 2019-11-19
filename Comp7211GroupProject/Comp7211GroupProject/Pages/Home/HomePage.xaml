@@ -47,7 +47,7 @@
                 <StackLayout x:Name="stackViewPost" IsVisible="False">
 
                     <!--Displays post-->
-                    <StackLayout Margin="20,20,20,20" WidthRequest="400" HeightRequest="250" > 
+                    <StackLayout Margin="20,20,20,20" WidthRequest="400" HeightRequest="175" >
                         <Label x:Name="txtViewPost"/>
                     </StackLayout>
                     
@@ -60,20 +60,30 @@
 
                     <!--Comment Entry Line-->
                     <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
-                        <Entry x:Name="entryComment" Placeholder="What's on your mind?...." WidthRequest="345"/>
+                        <Editor x:Name="txtComment" Placeholder="Your comment..." WidthRequest="300" HeightRequest="100"/>
+                        <StackLayout VerticalOptions="Center">
+                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSend_Clicked" HeightRequest="50" VerticalOptions="Center"/>
+                        </StackLayout>
                     </StackLayout>
 
                     <!--Diplays all comments-->
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <ScrollView>
-                            <StackLayout>
-                                <!--Comments go here-->
-                            </StackLayout>
-                        </ScrollView>
+                    <StackLayout>
+                        <ListView x:Name="lstComments"  HasUnevenRows="True" IsEnabled="False">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+
+                                        <StackLayout Margin="10">
+                                            <Label Text="{Binding Comment}"/>
+                                        </StackLayout>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
-                    
+
                 </StackLayout>
-                
                 
             </StackLayout>
         </ScrollView>
