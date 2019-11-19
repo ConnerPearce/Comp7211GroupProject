@@ -27,7 +27,7 @@ namespace Comp7211GroupProject
             InitializeComponent();
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
-            liked = false;
+
         }
 
         
@@ -54,12 +54,11 @@ namespace Comp7211GroupProject
             stackPosts.IsVisible = true;
             if (!String.IsNullOrEmpty(txtMessage.Text))
             {
-                string response = await postsProxy.PostPosts(new Posts { Post = txtMessage.Text, Uid = 1 });
+                string response = await postsProxy.PostPosts(new Posts { Post = txtMessage.Text, Uid = MainPage.user.Id });
                 await DisplayAlert("Progress", response , "Ok");
             }
             else
                 await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
-
         }
 
         //tap on a post and it will expand on it allow you to like or private message

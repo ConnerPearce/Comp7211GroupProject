@@ -74,15 +74,16 @@ namespace Comp7211GroupProject
             SavePassword();
         }
 
+        UserProxy userProxy = new UserProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
+
         private async void SavePassword()
         {
-            UserProxy userProxy = new UserProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
-            Users user = new Users() { Id = 3, Uid = "27036778", Fname = "Jot", Lname = "Sidhu", Pword = "1234" };
-            if (user.Pword == txtOldPassword.Text)
+
+            if (MainPage.user.Pword == txtOldPassword.Text)
             {
                 if (txtNewPassword.Text == txtConfirmNewPassword.Text)
                 {
-                    user.Pword = txtConfirmNewPassword.Text;
+                    MainPage.user.Pword = txtConfirmNewPassword.Text;
                     txtOldPassword.Text = "";
                     txtNewPassword.Text = "";
                     txtConfirmNewPassword.Text = "";
@@ -101,17 +102,15 @@ namespace Comp7211GroupProject
 
         private async void SaveNickname()
         {
-            UserProxy userProxy = new UserProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
-            Users user = new Users() { Id = 3, Uid = "27036778", Fname = "Jot", Lname = "Sidhu", Pword = "1234" };
             if (txtPassword.Text == txtConfirmPassword.Text)
             {
-                if (user.Pword == txtConfirmPassword.Text)
+                if (MainPage.user.Pword == txtConfirmPassword.Text)
                 {
-                    user.Nickname = txtNickname.Text;
+                    MainPage.user.Nickname = txtNickname.Text;
                     txtNickname.Text = "";
                     txtPassword.Text = "";
                     txtConfirmPassword.Text = "";
-                    await DisplayAlert("Result of Changes", $"{await userProxy.PostUserInfo(user)}", "Ok");
+                    await DisplayAlert("Result of Changes", $"{await userProxy.PostUserInfo((Users)MainPage.user)}", "Ok");
                 }
             }
             else

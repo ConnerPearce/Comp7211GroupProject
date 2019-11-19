@@ -10,6 +10,7 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration;
 using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.API.Proxys;
+using Comp7211GroupProject.Classes.ContactPage.Message;
 
 namespace Comp7211GroupProject
 {
@@ -18,6 +19,7 @@ namespace Comp7211GroupProject
     {
         private readonly IMessagesProxy _messageProxy = new MessagesProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
         private IMessages msgMod = new Messages();
+        private MessagesBackend messagesBackend = new MessagesBackend();
 
         public ContactPage()
         {          
@@ -26,6 +28,13 @@ namespace Comp7211GroupProject
             On<Android>().SetBarItemColor(Color.FromHex("#737373"));
             MsgStack.IsVisible = true;
             ReplyStack.IsVisible = false;
+
+            SetListView();
+        }
+
+        private async void SetListView()
+        {
+            lstViewMessages.ItemsSource = await messagesBackend.GetMessagesInfo();
         }
 
         //Form page functions
@@ -54,15 +63,19 @@ namespace Comp7211GroupProject
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             msgMod = (IMessages)e.SelectedItem;
-            lblMsgPreview.Text = msgMod.Msg;
-            MsgStack.IsVisible = false;
-            ReplyStack.IsVisible = true;
+            if (msgMod != null)
+            {
+                lblMsgPreview.Text = msgMod.Msg;
+                MsgStack.IsVisible = false;
+                ReplyStack.IsVisible = true;
+            }
         }
 
         private void btnCancelMsg_Clicked(object sender, EventArgs e)
         {
             MsgStack.IsVisible = true;
             ReplyStack.IsVisible = false;
+            lstViewMessages.SelectedItem = null;
         }
 
         private async void btnSubmitMsg_Clicked(object sender, EventArgs e)
@@ -73,8 +86,10 @@ namespace Comp7211GroupProject
                 await DisplayAlert("Reply Sent", temp, "Ok");
                 MsgStack.IsVisible = true;
                 ReplyStack.IsVisible = false;
-                await Navigation.PopModalAsync();
+                lstViewMessages.SelectedItem = null;
             }
+
+            SetListView();
         }
     }
 }
