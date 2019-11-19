@@ -6,7 +6,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
 {
     public interface ICommentsProxy
     {
-        Task<List<IComments>> GetCommentsByPost(int postID);
+        Task<List<Comments>> GetCommentsByPost(int postID);
         Task<string> PostComments(Comments comment);
     }
 }

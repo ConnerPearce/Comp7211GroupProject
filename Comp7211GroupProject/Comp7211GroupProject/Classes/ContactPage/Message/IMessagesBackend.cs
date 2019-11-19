@@ -9,5 +9,6 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
         List<Messages> MessagesList { get; set; }
 
         Task<List<Messages>> GetMessagesInfo();
+
     }
 }

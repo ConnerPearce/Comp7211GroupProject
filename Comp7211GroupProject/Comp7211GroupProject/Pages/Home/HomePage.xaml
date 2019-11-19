@@ -8,25 +8,21 @@
              x:Class="Comp7211GroupProject.HomePage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="#DADDD8"> 
+            <StackLayout BackgroundColor="#DADDD8">
                 <StackLayout x:Name="stackPosts" IsVisible="True"> <!--This is where all the posts are shown etc-->
                     <StackLayout Margin="20,20,20,20">
                         <Button x:Name="btnCreatePost" Text="What's on your mind?" BackgroundColor="White" TextColor="DimGray" CornerRadius="25" Clicked="btnCreatePost_Clicked"/>
                     </StackLayout>
-                    <ListView x:Name="lstViewPosts" ItemsSource="{Binding Path=PostList}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                    <ListView x:Name="lstViewPosts" ItemsSource="{Binding Path=PostList}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="viewPost_ItemSelected">
                         <ListView.BindingContext>
                             <local:HomeBackend/>
                         </ListView.BindingContext>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    
-                                    <StackLayout Margin="10">
-                                        <Label Text="{Binding Post}">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="lblViewPost_Tapped"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
+
+                                    <StackLayout Margin="20,5,20,0" BackgroundColor="White" HeightRequest="45">
+                                        <Label Text="{Binding Post}" Margin="10,0,10,0"/>
                                     </StackLayout>
                                     
                                 </ViewCell>
@@ -34,9 +30,10 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-
+                
+                <!--This is a popup page to create a new post-->
                 <StackLayout x:Name="stackCreatePost" IsVisible="False">
-                    <!--This is popup page to create a new post-->
+                    
                     <StackLayout Margin="20,20,20,20">
                         <Entry x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
 
@@ -46,6 +43,68 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+
+                <!--This is the View Post Page-->
+                <StackLayout x:Name="stackViewPost" IsVisible="False" Spacing="0">
+
+                    <!--Displays post-->
+                    <StackLayout Margin="20,20,20,0" WidthRequest="400" HeightRequest="175" BackgroundColor="White">
+                        <Label x:Name="txtViewPost" Margin="5,5,5,5"/>
+                    </StackLayout>
+                    
+                    <!--Back, Private Message and Upvote, Buttons-->
+                    <StackLayout BackgroundColor="White" WidthRequest="400" Margin="20,0,20,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="70">
+                            <ImageButton x:Name="btnBack" Source="goBack.png" Clicked="btnVPBack_Clicked" WidthRequest="40" HeightRequest="40"/>
+                            <ImageButton x:Name="btnPrivateMessage" Source="privateMessage.png" Clicked="btnVPPrivateMsg_Clicked" WidthRequest="40" HeightRequest="40"/>
+                            <ImageButton x:Name="btnUpVote" Source="arrowUp2.png" Clicked="btnVPUpVote_Clicked" WidthRequest="40" HeightRequest="40" />
+                        </StackLayout>
+                    </StackLayout>
+
+
+                    <!--Comment Entry Line-->
+                    <StackLayout  BackgroundColor="White" WidthRequest="400" Margin="20,10,20,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                            <Editor x:Name="txtComment" Placeholder="Your comment..." WidthRequest="280"/>
+                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendComment_Clicked"/>
+                        </StackLayout>
+                        
+                    </StackLayout>
+
+                    <!--Diplays all comments-->
+                    <StackLayout>
+                        <ListView x:Name="lstComments"  HasUnevenRows="True" IsEnabled="False">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+
+                                        <StackLayout Margin="20,5,20,0" BackgroundColor="White" HeightRequest="45">
+                                            <Label Text="{Binding Comment}" Margin="10,0,10,0"/>
+                                        </StackLayout>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    
+                    
+
+                </StackLayout>
+
+                <!--Create Private Message Page -->
+                <StackLayout x:Name="stackPrivateM" IsVisible="False">
+
+                    <StackLayout Margin="20,20,20,20">
+                        <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="btnPMCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnPMCancel_Clicked"/>
+                            <Button x:Name="btnPMSubmit" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnPMSubmit_Clicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
