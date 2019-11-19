@@ -15,6 +15,7 @@ namespace Comp7211GroupProject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+
         private IContainer container;
         //private Users login;
         public LoginPage()//(LoginModel loginMdl) inside LoginPage()

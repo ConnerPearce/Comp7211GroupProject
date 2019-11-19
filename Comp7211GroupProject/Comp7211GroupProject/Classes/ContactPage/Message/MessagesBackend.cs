@@ -49,7 +49,7 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
 
         public async Task<string> SendMessage(string message, int recId)
         {
-            if (string.IsNullOrWhiteSpace(message))
+            if (!string.IsNullOrWhiteSpace(message))
             {
                 var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = recId, SenderId = MainPage.user.Id, Msg = message });
                 return result;

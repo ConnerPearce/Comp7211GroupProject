@@ -74,7 +74,7 @@ namespace Comp7211GroupProject
             if (!String.IsNullOrEmpty(txtMsg.Text))
             {
                 string response = await _messageProxy.PostMessage(new Messages { ReceiverId = msgMod.SenderId, SenderId = msgMod.ReceiverId, Msg = txtMsg.Text });
-                await DisplayAlert("Reply Sent", "Reply has been successfully sent!", "Ok");
+                await DisplayAlert("Reply Sent", response, "Ok");
                 MsgStack.IsVisible = true;
                 ReplyStack.IsVisible = false;
                 lstMsg.SelectedItem = null;
