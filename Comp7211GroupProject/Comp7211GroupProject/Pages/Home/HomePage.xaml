@@ -99,8 +99,8 @@
                 <StackLayout x:Name="stackPrivateM" IsVisible="False">
 
                     <StackLayout Margin="20,20,20,20">
-                        <StackLayout WidthRequest="400" HeightRequest="500" BackgroundColor="White">
-                            <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
+                        <StackLayout WidthRequest="400" HeightRequest="300" BackgroundColor="White">
+                            <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="300" TextColor="Black"/>
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
