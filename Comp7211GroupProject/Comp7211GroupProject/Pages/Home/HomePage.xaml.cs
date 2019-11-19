@@ -26,7 +26,6 @@ namespace Comp7211GroupProject
             InitializeComponent();
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
-
         }
 
         
@@ -58,7 +57,6 @@ namespace Comp7211GroupProject
             }
             else
                 await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
-
         }
 
         //tap on a post and it will expand on it allow you to like or private message
