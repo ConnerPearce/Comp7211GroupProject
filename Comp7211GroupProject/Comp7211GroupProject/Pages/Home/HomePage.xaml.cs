@@ -137,14 +137,12 @@ namespace Comp7211GroupProject
 
         private async void btnPMSubmit_Clicked(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtComment.Text))
-            {
+
                 MessagesBackend _messagesBack = new MessagesBackend();
 
                 string response = await _messagesBack.SendMessage(txtPrivateMessage.Text, post.Uid);
                 await DisplayAlert("Comment Sent", response, "Ok");
                 txtPrivateMessage.Text = String.Empty;
-            } 
         }
 
     }
