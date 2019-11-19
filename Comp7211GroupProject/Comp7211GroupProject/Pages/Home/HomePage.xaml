@@ -48,7 +48,6 @@
 
                     <!--Displays post-->
                     <StackLayout Margin="20,20,20,20" WidthRequest="400" HeightRequest="250" > 
-                        <Label Text="This is an expanded post you are seeing"/>
                         <Label x:Name="txtViewPost"/>
                     </StackLayout>
                     
