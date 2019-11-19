@@ -25,7 +25,6 @@ namespace Comp7211GroupProject
             InitializeComponent();
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
-
         }
 
         private void btnCreatePost_Clicked(object sender, EventArgs e)
@@ -55,7 +54,6 @@ namespace Comp7211GroupProject
             }
             else
                 await DisplayAlert("Error", "The Message box must not be left empty!, Try again", "Ok");
-
         }
     }
 }
