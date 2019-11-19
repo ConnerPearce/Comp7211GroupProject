@@ -16,7 +16,7 @@
                 
                 <StackLayout BackgroundColor="#DADDD8">
                     <StackLayout x:Name="MsgStack" BackgroundColor="{x:StaticResource Background}" IsVisible="True">
-                        <ListView x:Name="lstMsg" ItemsSource="{Binding MessagesList}" HasUnevenRows="True" VerticalOptions="FillAndExpand" IsEnabled="True" ItemSelected="lstMsg_ItemSelected">
+                        <ListView Margin="0,15,0,0" x:Name="lstMsg" ItemsSource="{Binding MessagesList}" HasUnevenRows="True" VerticalOptions="FillAndExpand" IsEnabled="True" ItemSelected="lstMsg_ItemSelected">
                             <ListView.BindingContext>
                                 <local1:MessagesBackend/>
                             </ListView.BindingContext>
