@@ -62,10 +62,7 @@ namespace Comp7211GroupProject
         }
 
         //tap on a post and it will expand on it allow you to like or private message
-        //private void lblViewPost_Tapped(object sender, EventArgs e)
-        //{
-            
-        //}
+
 
         private void viewPost_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
