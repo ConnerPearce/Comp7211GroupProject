@@ -54,15 +54,19 @@ namespace Comp7211GroupProject
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             msgMod = (IMessages)e.SelectedItem;
-            lblMsgPreview.Text = msgMod.Msg;
-            MsgStack.IsVisible = false;
-            ReplyStack.IsVisible = true;
+            if (msgMod != null)
+            {
+                lblMsgPreview.Text = msgMod.Msg;
+                MsgStack.IsVisible = false;
+                ReplyStack.IsVisible = true;
+            }
         }
 
         private void btnCancelMsg_Clicked(object sender, EventArgs e)
         {
             MsgStack.IsVisible = true;
             ReplyStack.IsVisible = false;
+            lstViewMessages.SelectedItem = null;
         }
 
         private async void btnSubmitMsg_Clicked(object sender, EventArgs e)
@@ -73,6 +77,7 @@ namespace Comp7211GroupProject
                 await DisplayAlert("Reply Sent", temp, "Ok");
                 MsgStack.IsVisible = true;
                 ReplyStack.IsVisible = false;
+                lstViewMessages.SelectedItem = null;
                 await Navigation.PopModalAsync();
             }
         }
