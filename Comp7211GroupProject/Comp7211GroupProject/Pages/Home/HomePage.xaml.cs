@@ -2,7 +2,6 @@
 using Comp7211GroupProject.Classes.API.Models;
 using Comp7211GroupProject.Classes.API.Proxys;
 using Comp7211GroupProject.Classes.HomePage;
-using Comp7211GroupProject.Pages.Home;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace Comp7211GroupProject
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -20,13 +20,14 @@ namespace Comp7211GroupProject
     {
 
         PostProxy postsProxy = new PostProxy("https://comp7211groupprojectapi20191115092109.azurewebsites.net/");
-
+        private IPosts post = new Posts();
+        bool liked;
         public HomePage()
         {
             InitializeComponent();
             stackCreatePost.IsVisible = false;
             stackPosts.IsVisible = true;
-
+            liked = false;
         }
 
         
@@ -62,11 +63,45 @@ namespace Comp7211GroupProject
         }
 
         //tap on a post and it will expand on it allow you to like or private message
-        private void lblViewPost_Tapped(object sender, EventArgs e)
-        {
-            ViewPostPage veiwPost = new ViewPostPage();
+        //private void lblViewPost_Tapped(object sender, EventArgs e)
+        //{
+            
+        //}
 
-            this.Navigation.PushModalAsync(veiwPost);
+        private void viewPost_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (stackCreatePost.IsVisible == false)
+            {
+                stackPosts.IsVisible = false;
+                stackViewPost.IsVisible = true;
+                post = (IPosts)e.SelectedItem;
+                txtViewPost.Text = post.Post;
+            } 
+        }
+
+        private void btnVPBack_Clicked(object sender, EventArgs e)
+        {
+            stackPosts.IsVisible = true;
+            stackViewPost.IsVisible = false;
+        }
+
+        private void btnVPPrivateMsg_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVPUpVote_Clicked(object sender, EventArgs e)
+        {
+            if (liked == false)
+            {
+                (sender as ImageButton).Source = "arrowUp2.png";
+                liked = true;
+            }
+            else
+            {
+                (sender as ImageButton).Source = "arrowUp1.png";
+                liked = false;
+            }
         }
     }
 }
