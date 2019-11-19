@@ -23,7 +23,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Margin="0,5,0,0" BackgroundColor="White" HeightRequest="45">
+                                        <StackLayout Margin="20,5,20,0" BackgroundColor="White" HeightRequest="45">
                                             <Label Text="{Binding Msg}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0,0,0" TextColor="Black"/>
                                         </StackLayout>
                                     </ViewCell>

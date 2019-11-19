@@ -122,6 +122,10 @@ namespace Comp7211GroupProject
                 await DisplayAlert("Comment Sent", response, "Ok");
                 txtComment.Text = String.Empty;
             }
+            else
+            {
+                await DisplayAlert("Error", "You need to fill in a comment", "Ok");
+            }
         }
 
         private void btnPMCancel_Clicked(object sender, EventArgs e)//brings the you back from Private Message page to View Posts page
@@ -130,16 +134,18 @@ namespace Comp7211GroupProject
             stackViewPost.IsVisible = true;
         }
 
+
         private async void btnPMSubmit_Clicked(object sender, EventArgs e)
         {
-            MessagesBackend _messagesBack = new MessagesBackend();
+            if (!String.IsNullOrEmpty(txtComment.Text))
+            {
+                MessagesBackend _messagesBack = new MessagesBackend();
 
-            string response = await _messagesBack.SendMessages(txtPrivateMessage.Text, post.Uid);
-            await DisplayAlert("Comment Sent", response, "Ok");
-            txtPrivateMessage.Text = String.Empty;
-
-            //var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = post, SenderId = MainPage.user.Id, Msg = txtPrivateMessage.Text });
-            //await DisplayAlert("Comment Sent", result, "Ok");
+                string response = await _messagesBack.SendMessage(txtPrivateMessage.Text, post.Uid);
+                await DisplayAlert("Comment Sent", response, "Ok");
+                txtPrivateMessage.Text = String.Empty;
+            } 
         }
+
     }
 }

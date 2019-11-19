@@ -20,9 +20,9 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    
-                                    <StackLayout Margin="10">
-                                        <Label Text="{Binding Post}"/>
+
+                                    <StackLayout Margin="20,5,20,0" BackgroundColor="White" HeightRequest="45">
+                                        <Label Text="{Binding Post}" Margin="10,0,10,0"/>
                                     </StackLayout>
                                     
                                 </ViewCell>
@@ -45,26 +45,30 @@
                 </StackLayout>
 
                 <!--This is the View Post Page-->
-                <StackLayout x:Name="stackViewPost" IsVisible="False">
+                <StackLayout x:Name="stackViewPost" IsVisible="False" Spacing="0">
 
                     <!--Displays post-->
-                    <StackLayout Margin="20,20,20,20" WidthRequest="400" HeightRequest="175" >
-                        <Label x:Name="txtViewPost"/>
+                    <StackLayout Margin="20,20,20,0" WidthRequest="400" HeightRequest="175" BackgroundColor="White">
+                        <Label x:Name="txtViewPost" Margin="5,5,5,5"/>
                     </StackLayout>
                     
                     <!--Back, Private Message and Upvote, Buttons-->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="70">
-                        <ImageButton x:Name="btnBack" Source="goBack.png" Clicked="btnVPBack_Clicked" WidthRequest="40" HeightRequest="40"/>
-                        <ImageButton x:Name="btnPrivateMessage" Source="privateMessage.png" Clicked="btnVPPrivateMsg_Clicked" WidthRequest="40" HeightRequest="40"/>
-                        <ImageButton x:Name="btnUpVote" Source="arrowUp2.png" Clicked="btnVPUpVote_Clicked" WidthRequest="40" HeightRequest="40" />
+                    <StackLayout BackgroundColor="White" WidthRequest="400" Margin="20,0,20,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="70">
+                            <ImageButton x:Name="btnBack" Source="goBack.png" Clicked="btnVPBack_Clicked" WidthRequest="40" HeightRequest="40"/>
+                            <ImageButton x:Name="btnPrivateMessage" Source="privateMessage.png" Clicked="btnVPPrivateMsg_Clicked" WidthRequest="40" HeightRequest="40"/>
+                            <ImageButton x:Name="btnUpVote" Source="arrowUp2.png" Clicked="btnVPUpVote_Clicked" WidthRequest="40" HeightRequest="40" />
+                        </StackLayout>
                     </StackLayout>
 
+
                     <!--Comment Entry Line-->
-                    <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
-                        <Editor x:Name="txtComment" Placeholder="Your comment..." WidthRequest="300" HeightRequest="100"/>
-                        <StackLayout VerticalOptions="Center">
-                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendComment_Clicked" HeightRequest="50" VerticalOptions="Center"/>
+                    <StackLayout  BackgroundColor="White" WidthRequest="400" Margin="20,10,20,0">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                            <Editor x:Name="txtComment" Placeholder="Your comment..." WidthRequest="280"/>
+                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendComment_Clicked"/>
                         </StackLayout>
+                        
                     </StackLayout>
 
                     <!--Diplays all comments-->
@@ -74,8 +78,8 @@
                                 <DataTemplate>
                                     <ViewCell>
 
-                                        <StackLayout Margin="10">
-                                            <Label Text="{Binding Comment}"/>
+                                        <StackLayout Margin="20,5,20,0" BackgroundColor="White" HeightRequest="45">
+                                            <Label Text="{Binding Comment}" Margin="10,0,10,0"/>
                                         </StackLayout>
 
                                     </ViewCell>
