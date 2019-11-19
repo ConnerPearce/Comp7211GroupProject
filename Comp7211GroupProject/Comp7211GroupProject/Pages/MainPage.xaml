@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Comp7211GroupProject.MainPage"
-                                     CurrentPageChanged="TabbedPage_CurrentPageChanged"
+             CurrentPageChanged="TabbedPage_CurrentPageChanged"
          xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
          BarBackgroundColor="White">
 

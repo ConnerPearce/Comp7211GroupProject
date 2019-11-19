@@ -87,7 +87,8 @@ namespace Comp7211GroupProject
                     txtOldPassword.Text = "";
                     txtNewPassword.Text = "";
                     txtConfirmNewPassword.Text = "";
-                    await DisplayAlert("SUCCESS", "Successfuly changed Password", "Ok");
+                    await DisplayAlert("Result of Changes", $"{await userProxy.PostUserInfo((Users)MainPage.user)}", "Ok");
+
                 }
                 else
                 {

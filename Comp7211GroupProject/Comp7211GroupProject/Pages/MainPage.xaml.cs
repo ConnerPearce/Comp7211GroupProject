@@ -18,8 +18,8 @@ namespace Comp7211GroupProject
     [DesignTimeVisible(false)]
     public partial class MainPage : Xamarin.Forms.TabbedPage
     {
-
         public static Users user = new Users();
+
         public MainPage()
         {
             //If user isn't already logged in, push LognPage on top of NavigationPage
