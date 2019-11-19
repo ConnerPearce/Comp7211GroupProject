@@ -34,11 +34,16 @@
 
                     <StackLayout x:Name="ReplyStack" IsVisible="False"> <!--This is popup page to reply to a message-->
                         <StackLayout Margin="20,20,20,20">
-                            <Label x:Name="lblMsgPreview" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Editor x:Name="txtMsg" Placeholder="Reply to message" Margin="20,20,20,20" WidthRequest="345" HeightRequest="175" TextColor="Black"/>
+                            <StackLayout BackgroundColor="White" HeightRequest="50">
+                                <Label x:Name="lblMsgPreview" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="15"/>
+                            </StackLayout>
+                            
+                            <StackLayout WidthRequest="400" HeightRequest="175" BackgroundColor="White">
+                                <Editor x:Name="txtMsg" Placeholder="Reply to message" Margin="5,0,5,20" HeightRequest="175" TextColor="Black"/>
+                            </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Button x:Name="btnCancelMsg" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancelMsg_Clicked"/>
-                                <Button x:Name="btnSendMsg" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendMsg_Clicked"/>
+                                <Button x:Name="btnCancelMsg" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancelMsg_Clicked" WidthRequest="184"/>
+                                <Button x:Name="btnSendMsg" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendMsg_Clicked" WidthRequest="184"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

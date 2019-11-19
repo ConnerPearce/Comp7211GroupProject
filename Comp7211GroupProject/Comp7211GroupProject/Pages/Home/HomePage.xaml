@@ -11,7 +11,7 @@
             <StackLayout BackgroundColor="#DADDD8">
                 <StackLayout x:Name="stackPosts" IsVisible="True"> <!--This is where all the posts are shown etc-->
                     <StackLayout Margin="20,20,20,20">
-                        <Button x:Name="btnCreatePost" Text="What's on your mind?" BackgroundColor="White" TextColor="DimGray" CornerRadius="25" Clicked="btnCreatePost_Clicked"/>
+                        <Button x:Name="btnCreatePost" Text="What's on your mind?" BackgroundColor="#42033D" TextColor="#FFFFFF" CornerRadius="15"  Clicked="btnCreatePost_Clicked"/>
                     </StackLayout>
                     <ListView x:Name="lstViewPosts" ItemsSource="{Binding Path=PostList}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="viewPost_ItemSelected">
                         <ListView.BindingContext>
@@ -21,7 +21,7 @@
                             <DataTemplate>
                                 <ViewCell>
 
-                                    <StackLayout Margin="20,5,20,0" BackgroundColor="White" HeightRequest="45">
+                                    <StackLayout Margin="20,0,20,5" BackgroundColor="White" HeightRequest="45">
                                         <Label Text="{Binding Post}" Margin="10,0,10,0"/>
                                     </StackLayout>
                                     
@@ -35,8 +35,8 @@
                 <StackLayout x:Name="stackCreatePost" IsVisible="False">
                     
                     <StackLayout Margin="20,20,20,20">
-                        <StackLayout WidthRequest="345" HeightRequest="500" BackgroundColor="White">
-                            <Editor x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="20,0,20,0" HeightRequest="500" TextColor="Black"/>
+                        <StackLayout WidthRequest="400" HeightRequest="500" BackgroundColor="White">
+                            <Editor x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="5,0,5,0" HeightRequest="500" TextColor="Black"/>
                         </StackLayout>
                         
 
@@ -99,13 +99,13 @@
                 <StackLayout x:Name="stackPrivateM" IsVisible="False">
 
                     <StackLayout Margin="20,20,20,20">
-                        <StackLayout WidthRequest="345" HeightRequest="500" BackgroundColor="White">
+                        <StackLayout WidthRequest="400" HeightRequest="500" BackgroundColor="White">
                             <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button x:Name="btnPMCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnPMCancel_Clicked"/>
-                            <Button x:Name="btnPMSubmit" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnPMSubmit_Clicked"/>
+                            <Button x:Name="btnPMCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnPMCancel_Clicked" WidthRequest="184"/>
+                            <Button x:Name="btnPMSubmit" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnPMSubmit_Clicked" WidthRequest="184"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
