@@ -23,8 +23,8 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Margin="10">
-                                            <Label Text="{Binding Msg}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                                        <StackLayout Margin="0,5,0,0" BackgroundColor="White" HeightRequest="45">
+                                            <Label Text="{Binding Msg}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0,0,0" TextColor="Black"/>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -35,7 +35,7 @@
                     <StackLayout x:Name="ReplyStack" IsVisible="False"> <!--This is popup page to reply to a message-->
                         <StackLayout Margin="20,20,20,20">
                             <Label x:Name="lblMsgPreview" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Entry x:Name="txtMsg" Placeholder="Reply to message" Margin="20,0,20,20" WidthRequest="345" HeightRequest="100" TextColor="Black"/>
+                            <Editor x:Name="txtMsg" Placeholder="Reply to message" Margin="20,20,20,20" WidthRequest="345" HeightRequest="175" TextColor="Black"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Button x:Name="btnCancelMsg" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancelMsg_Clicked"/>
                                 <Button x:Name="btnSendMsg" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSendMsg_Clicked"/>

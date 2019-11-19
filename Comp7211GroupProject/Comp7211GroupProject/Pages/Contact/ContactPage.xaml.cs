@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
@@ -67,6 +66,7 @@ namespace Comp7211GroupProject
             MsgStack.IsVisible = true;
             ReplyStack.IsVisible = false;
             lstMsg.SelectedItem = null;
+            txtMsg.Text = String.Empty;
         }
 
         private async void btnSendMsg_Clicked(object sender, EventArgs e)
@@ -77,6 +77,8 @@ namespace Comp7211GroupProject
                 await DisplayAlert("Reply Sent", response, "Ok");
                 MsgStack.IsVisible = true;
                 ReplyStack.IsVisible = false;
+                lstMsg.SelectedItem = null;
+                txtMsg.Text = String.Empty;
             }
         }
     }
