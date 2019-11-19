@@ -58,9 +58,9 @@
 
                 <Button x:Name="btnAboutMe" BackgroundColor="White" Text="About Us" TextColor="Black" Margin="0,10,0,0" Clicked="btnAboutMe_Clicked"/>
                 <StackLayout BackgroundColor="White" x:Name="stackAboutMe" IsVisible="False">
-                    <Label Text="Who are we?" FontSize="25" Margin="20,0,20,0" TextColor="#FFC40C"/>
+                    <Label Text="Who are we?" FontSize="25" Margin="20,0,20,0" TextColor="#000000"/>
                     <Label Text="We are a group of amazing students, aiming to make a mark in this world. Our goal is to create amazing apps for our dear future customers and in turn earn revenue from them." Margin="20,0,20,0"/>
-                    <Label Text="What does App do?" FontSize="25" Margin="20,0,20,0" TextColor="#FFC40C"/>
+                    <Label Text="What does App do?" FontSize="25" Margin="20,0,20,0" TextColor="#000000"/>
                     <Label Text="This is a student-Rep app, that allows for anonymous communication from student to student or Rep to student. The main functions of this App are: creating a post, commenting a post or Sending a private message." Margin="20,0,20,10"/>
                 </StackLayout>
 
