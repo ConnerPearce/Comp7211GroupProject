@@ -20,12 +20,12 @@
             <StackLayout Grid.Row="1">
                 <StackLayout Padding="75,20,75,0">
                     <!-- Stack Layout for Username Box-->
-                    <Entry x:Name="txtStudentID" Placeholder="Student ID" />
+                    <Entry x:Name="txtStudentID" Placeholder="Student ID" Keyboard="Numeric" />
                 </StackLayout>
 
                 <StackLayout Padding="75,20,75,0">
                     <!-- Stack Layout for Password Box-->
-                    <Entry x:Name="txtPassword" Placeholder="Password"/>
+                    <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True"/>
                 </StackLayout>
 
                 <Button x:Name="btnLogin" Text="Login" TextColor="White" BackgroundColor="Black" Margin="75,40,75,0" CornerRadius="25" Clicked="btnLogin_Clicked"/>

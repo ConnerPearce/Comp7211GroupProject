@@ -35,11 +35,14 @@
                 <StackLayout x:Name="stackCreatePost" IsVisible="False">
                     
                     <StackLayout Margin="20,20,20,20">
-                        <Entry x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
+                        <StackLayout WidthRequest="345" HeightRequest="500" BackgroundColor="White">
+                            <Editor x:Name="txtMessage" Placeholder="Whats on your mind?" Margin="20,0,20,0" HeightRequest="500" TextColor="Black"/>
+                        </StackLayout>
+                        
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button x:Name="btnCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancel_Clicked"/>
-                            <Button x:Name="btnSubmit" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnSubmit_Clicked"/>
+                            <Button x:Name="btnCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnCancel_Clicked" WidthRequest="184"/>
+                            <Button x:Name="btnSubmit" Text="Submit" BackgroundColor="Green" TextColor="White" Clicked="btnSubmit_Clicked" WidthRequest="184"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
@@ -96,7 +99,9 @@
                 <StackLayout x:Name="stackPrivateM" IsVisible="False">
 
                     <StackLayout Margin="20,20,20,20">
-                        <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
+                        <StackLayout WidthRequest="345" HeightRequest="500" BackgroundColor="White">
+                            <Entry x:Name="txtPrivateMessage" Placeholder="Tell me your secret~" Margin="20,0,20,20" WidthRequest="345" HeightRequest="500" TextColor="White"/>
+                        </StackLayout>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Button x:Name="btnPMCancel" Text="Cancel" BackgroundColor="DarkRed" TextColor="White" Clicked="btnPMCancel_Clicked"/>
