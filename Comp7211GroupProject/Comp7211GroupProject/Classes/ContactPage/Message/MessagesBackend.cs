@@ -25,10 +25,10 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
 
         public List<Messages> MessagesList { get; set; } = new List<Messages>();//The List for where we will store the data from api
 
-        public async void GetMessagesInfo()//this code is where the data from the api will be added to thew list
+        public async Task<List<Messages>> GetMessagesInfo()//this code is where the data from the api will be added to thew list
         {
             MessagesList = new List<Messages>();
-            var temp = await _messagesProxy.GetMessages(2);
+            var temp = await _messagesProxy.GetMessages(1);
             if (temp != null)
             {
                 if (temp.Count > 1)
@@ -41,6 +41,8 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
                 else
                     MessagesList.Add(temp[0]);
             }
+            return MessagesList;
+
         }
 
         //The code below is for sending messages
@@ -49,7 +51,7 @@ namespace Comp7211GroupProject.Classes.ContactPage.Message
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = 1, SenderId = 2, Msg = message });
+                var result = await _messagesProxy.PostMessage(new Messages { ReceiverId = 1, SenderId = MainPage.user.Id, Msg = message });
                 return result;
             }
             return null;

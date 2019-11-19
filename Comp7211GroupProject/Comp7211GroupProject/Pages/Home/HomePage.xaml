@@ -8,12 +8,12 @@
              x:Class="Comp7211GroupProject.HomePage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="#DADDD8"> 
+            <StackLayout BackgroundColor="#DADDD8">
                 <StackLayout x:Name="stackPosts" IsVisible="True"> <!--This is where all the posts are shown etc-->
                     <StackLayout Margin="20,20,20,20">
                         <Button x:Name="btnCreatePost" Text="What's on your mind?" BackgroundColor="White" TextColor="DimGray" CornerRadius="25" Clicked="btnCreatePost_Clicked"/>
                     </StackLayout>
-                    <ListView x:Name="lstViewPosts" ItemsSource="{Binding Path=PostList}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                    <ListView x:Name="lstViewPosts" ItemsSource="{Binding Path=PostList}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="viewPost_ItemSelected">
                         <ListView.BindingContext>
                             <local:HomeBackend/>
                         </ListView.BindingContext>
@@ -22,11 +22,7 @@
                                 <ViewCell>
                                     
                                     <StackLayout Margin="10">
-                                        <Label Text="{Binding Post}">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="lblViewPost_Tapped"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
+                                        <Label Text="{Binding Post}"/>
                                     </StackLayout>
                                     
                                 </ViewCell>
@@ -46,6 +42,39 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+
+                <!--This is where show post is located-->
+                <StackLayout x:Name="stackViewPost" IsVisible="False">
+
+                    <!--Displays post-->
+                    <StackLayout Margin="20,20,20,20" WidthRequest="400" HeightRequest="250" > 
+                        <Label x:Name="txtViewPost"/>
+                    </StackLayout>
+                    
+                    <!--Back, Private Message and Upvote, Buttons-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="70">
+                        <ImageButton x:Name="btnBack" Source="goBack.png" Clicked="btnVPBack_Clicked" WidthRequest="40" HeightRequest="40"/>
+                        <ImageButton x:Name="btnPrivateMessage" Source="privateMessage.png" Clicked="btnVPPrivateMsg_Clicked" WidthRequest="40" HeightRequest="40"/>
+                        <ImageButton x:Name="btnUpVote" Source="arrowUp2.png" Clicked="btnVPUpVote_Clicked" WidthRequest="40" HeightRequest="40" />
+                    </StackLayout>
+
+                    <!--Comment Entry Line-->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                        <Entry x:Name="entryComment" Placeholder="What's on your mind?...." WidthRequest="345"/>
+                    </StackLayout>
+
+                    <!--Diplays all comments-->
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <ScrollView>
+                            <StackLayout>
+                                <!--Comments go here-->
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    
+                </StackLayout>
+                
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
