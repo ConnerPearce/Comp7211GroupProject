@@ -47,40 +47,43 @@
                 <StackLayout x:Name="stackViewPost" IsVisible="False">
 
                     <!--Displays post-->
-
-
-                    <Frame Margin="20,20,20,0">
-                        <StackLayout  WidthRequest="400" HeightRequest="250" >
-                            <Label x:Name="txtViewPost"/>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="20,0,20,20">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="70" HeightRequest="30">
-                            <ImageButton x:Name="btnBack" Source="goBack.png" Clicked="btnVPBack_Clicked" WidthRequest="40" HeightRequest="40" BackgroundColor="#FFFFFFF"/>
-                            <ImageButton x:Name="btnPrivateMessage" Source="privateMessage.png" Clicked="btnVPPrivateMsg_Clicked" WidthRequest="40" HeightRequest="40" BackgroundColor="#FFFFFFF"/>
-                            <ImageButton x:Name="btnUpVote" Source="arrowUp2.png" Clicked="btnVPUpVote_Clicked" WidthRequest="40" HeightRequest="40" BackgroundColor="#FFFFFFF"/>
-                        </StackLayout>
-                    </Frame>
-                    <!--Back, Private Message and Upvote, Buttons-->
+                    <StackLayout Margin="20,20,20,20" WidthRequest="400" HeightRequest="175" >
+                        <Label x:Name="txtViewPost"/>
+                    </StackLayout>
                     
+                    <!--Back, Private Message and Upvote, Buttons-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="70">
+                        <ImageButton x:Name="btnBack" Source="goBack.png" Clicked="btnVPBack_Clicked" WidthRequest="40" HeightRequest="40"/>
+                        <ImageButton x:Name="btnPrivateMessage" Source="privateMessage.png" Clicked="btnVPPrivateMsg_Clicked" WidthRequest="40" HeightRequest="40"/>
+                        <ImageButton x:Name="btnUpVote" Source="arrowUp2.png" Clicked="btnVPUpVote_Clicked" WidthRequest="40" HeightRequest="40" />
+                    </StackLayout>
 
                     <!--Comment Entry Line-->
                     <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
-                        <Entry x:Name="entryComment" Placeholder="What's on your mind?...." WidthRequest="345"/>
+                        <Editor x:Name="txtComment" Placeholder="Your comment..." WidthRequest="300" HeightRequest="100"/>
+                        <StackLayout VerticalOptions="Center">
+                            <Button x:Name="btnSend" Text="Send" BackgroundColor="Green" TextColor="White" Clicked="btnSend_Clicked" HeightRequest="50" VerticalOptions="Center"/>
+                        </StackLayout>
                     </StackLayout>
 
                     <!--Diplays all comments-->
-                    <StackLayout VerticalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="250">
-                        <ScrollView>
-                            <StackLayout>
-                                <!--Comments go here-->
-                            </StackLayout>
+                    <StackLayout>
+                        <ListView x:Name="lstComments"  HasUnevenRows="True" IsEnabled="False">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
 
-                        </ScrollView>
+                                        <StackLayout Margin="10">
+                                            <Label Text="{Binding Comment}"/>
+                                        </StackLayout>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
-                    
+
                 </StackLayout>
-                
                 
             </StackLayout>
         </ScrollView>
