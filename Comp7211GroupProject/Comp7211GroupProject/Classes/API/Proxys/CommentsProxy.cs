@@ -51,7 +51,7 @@ namespace Comp7211GroupProject.Classes.API.Proxys
         }
 
         // Deleting a post takes in the commentsID
-        //Returns a string detailing if it was a success or failure
+        // Returns a string detailing if it was a success or failure
         public async Task<string> DeleteComment(int id)
         {
             HttpClient http = new HttpClient();
